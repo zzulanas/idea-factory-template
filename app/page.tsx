@@ -1,63 +1,140 @@
-import Image from "next/image";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 export default function Home() {
+  const features = [
+    { name: "Next.js 15", description: "App Router with Server Components" },
+    { name: "TypeScript", description: "Full type safety" },
+    { name: "tRPC", description: "End-to-end type-safe APIs" },
+    { name: "Drizzle ORM", description: "Lightweight, type-safe database client" },
+    { name: "PostgreSQL", description: "Powerful relational database" },
+    { name: "Redis", description: "Caching and pub/sub" },
+    { name: "MinIO", description: "S3-compatible object storage" },
+    { name: "Shadcn/ui", description: "Beautiful, accessible components" },
+    { name: "Tailwind CSS", description: "Utility-first styling" },
+  ];
+
+  const services = [
+    { name: "PostgreSQL", url: "http://192.168.1.197:5050", description: "pgAdmin" },
+    { name: "Redis", url: "http://192.168.1.197:8082", description: "Redis Commander" },
+    { name: "MinIO", url: "http://192.168.1.197:9001", description: "Console" },
+    { name: "Coolify", url: "http://100.99.86.40:8000", description: "Deployment Platform" },
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-950">
+      <main className="container mx-auto px-4 py-16 max-w-6xl">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <Badge className="mb-4" variant="outline">
+            Idea Factory Template
+          </Badge>
+          <h1 className="text-5xl font-bold tracking-tight mb-4">
+            Build Full-Stack Apps in{" "}
+            <span className="bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">
+              Minutes
+            </span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            A modern Next.js template with everything you need for rapid prototyping.
+            From database to deployment, all pre-configured and ready to go.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Features Grid */}
+        <div className="mb-16">
+          <h2 className="text-2xl font-semibold mb-6 text-center">Tech Stack</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {features.map((feature) => (
+              <Card key={feature.name}>
+                <CardHeader>
+                  <CardTitle className="text-lg">{feature.name}</CardTitle>
+                  <CardDescription>{feature.description}</CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Infrastructure Services */}
+        <div className="mb-16">
+          <h2 className="text-2xl font-semibold mb-6 text-center">Infrastructure Services</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {services.map((service) => (
+              <Card key={service.name}>
+                <CardHeader>
+                  <CardTitle className="text-lg">{service.name}</CardTitle>
+                  <CardDescription>{service.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <a
+                    href={service.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 text-sm"
+                  >
+                    {service.url} →
+                  </a>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Quick Links */}
+        <Card className="bg-gradient-to-br from-blue-50 to-violet-50 dark:from-blue-950 dark:to-violet-950 border-blue-200 dark:border-blue-800">
+          <CardHeader>
+            <CardTitle>Getting Started</CardTitle>
+            <CardDescription>Everything you need to start building</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <div>
+              <h3 className="font-semibold mb-2">📚 Documentation</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                Check out <code className="bg-white dark:bg-gray-900 px-2 py-1 rounded">CLAUDE_CODE.md</code> for comprehensive guides on:
+              </p>
+              <ul className="list-disc list-inside text-sm text-gray-600 dark:text-gray-400 mt-2 space-y-1">
+                <li>Database operations with Drizzle ORM</li>
+                <li>Building type-safe APIs with tRPC</li>
+                <li>Caching strategies with Redis</li>
+                <li>File storage with S3/MinIO</li>
+                <li>Adding authentication (Clerk)</li>
+                <li>Deployment guides</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-2">🚀 Quick Commands</h3>
+              <div className="space-y-2 text-sm">
+                <div className="bg-white dark:bg-gray-900 p-3 rounded font-mono">
+                  npm run dev <span className="text-gray-500"># Start development</span>
+                </div>
+                <div className="bg-white dark:bg-gray-900 p-3 rounded font-mono">
+                  npm run db:studio <span className="text-gray-500"># Open database GUI</span>
+                </div>
+                <div className="bg-white dark:bg-gray-900 p-3 rounded font-mono">
+                  npm run db:push <span className="text-gray-500"># Sync database schema</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-2">💡 What to Build</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                This template is perfect for SaaS MVPs, internal tools, dashboards,
+                API-first applications, and more. Start with the example schema in{" "}
+                <code className="bg-white dark:bg-gray-900 px-2 py-1 rounded">db/schema.ts</code> and
+                the tRPC routers in{" "}
+                <code className="bg-white dark:bg-gray-900 px-2 py-1 rounded">lib/server/routers/</code>.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Footer */}
+        <div className="mt-16 text-center text-sm text-gray-500">
+          <p>Built with Next.js, tRPC, Drizzle, and Shadcn/ui</p>
+          <p className="mt-2">
+            Ready to deploy? Use Coolify for local hosting or Vercel for cloud deployment.
+          </p>
         </div>
       </main>
     </div>
