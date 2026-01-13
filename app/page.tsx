@@ -18,7 +18,7 @@ export default function Home() {
     { name: "PostgreSQL", url: "http://192.168.1.197:5050", description: "pgAdmin" },
     { name: "Redis", url: "http://192.168.1.197:8082", description: "Redis Commander" },
     { name: "MinIO", url: "http://192.168.1.197:9001", description: "Console" },
-    { name: "Coolify", url: "http://100.99.86.40:8000", description: "Deployment Platform" },
+    { name: "Dokploy", url: "http://192.168.1.197:3000", description: "Deployment Platform" },
   ];
 
   return (
@@ -133,7 +133,7 @@ export default function Home() {
         <div className="mt-16 text-center text-sm text-gray-500">
           <p>Built with Next.js, tRPC, Drizzle, and Shadcn/ui</p>
           <p className="mt-2">
-            Ready to deploy? Use Coolify for local hosting or Vercel for cloud deployment.
+            Ready to deploy? Use Dokploy for local hosting or Vercel for cloud deployment.
           </p>
         </div>
       </main>

@@ -102,7 +102,7 @@ npm run db:studio    # Launch Drizzle Studio (database GUI)
 | pgAdmin | http://192.168.1.197:5050 | - |
 | Redis Commander | http://192.168.1.197:8082 | - |
 | MinIO Console | http://192.168.1.197:9001 | - |
-| Coolify | http://100.99.86.40:8000 | Vercel, Railway, Fly.io |
+| Dokploy | http://192.168.1.197:3000 | Vercel, Railway, Fly.io |
 
 ## 📁 Project Structure
 

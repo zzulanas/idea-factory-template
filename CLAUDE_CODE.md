@@ -512,19 +512,23 @@ export function MyComponent() {
 
 ## Deployment
 
-### Local Deployment with Coolify
+### Local Deployment with Dokploy
 
-1. Access Coolify at http://100.99.86.40:8000
+1. Access Dokploy at http://192.168.1.197:3000
 2. Create a new project
-3. Connect your git repository
-4. Add environment variables
-5. Deploy!
+3. Create an application linked to your git repository
+4. Add environment variables and build args
+5. Add domains (e.g., `devhub.taile34b62.ts.net` for Tailscale Funnel access)
+6. Deploy!
 
-Coolify will:
-- Build your Next.js app
+Dokploy will:
+- Build your Next.js app via Docker
 - Set up automatic deployments on git push
-- Provide a domain (or use your own)
-- Handle SSL certificates
+- Route traffic via Traefik reverse proxy
+- Support multiple domains per application
+
+**Public Access via Tailscale Funnel:**
+Your app is publicly accessible at https://devhub.taile34b62.ts.net/ via Tailscale Funnel (HTTPS, no ports to open).
 
 ### Cloud Deployment
 
@@ -721,7 +725,7 @@ Cmd+Shift+P → "TypeScript: Restart TS Server"
 
 For infrastructure issues, check:
 - `~/docker-stacks/INFRASTRUCTURE.md` - Complete infrastructure documentation
-- Coolify logs: `/data/coolify/source/`
+- Dokploy logs: Check the Dokploy dashboard at http://192.168.1.197:3000
 - Docker logs: `docker logs <container-name>`
 
 Happy building! 🚀
