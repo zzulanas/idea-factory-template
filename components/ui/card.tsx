@@ -1,15 +1,45 @@
 import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
-function Card({ className, ...props }: React.ComponentProps<"div">) {
+const cardVariants = cva(
+  "flex flex-col gap-6 rounded-2xl py-6 transition-all duration-200",
+  {
+    variants: {
+      variant: {
+        default:
+          "bg-card text-card-foreground border shadow-sm",
+        glass:
+          "glass glass-border text-card-foreground hover-lift",
+        "glass-subtle":
+          "glass-subtle glass-border text-card-foreground",
+        "glass-intense":
+          "glass-intense glass-border glass-glow text-card-foreground",
+        gradient:
+          "bg-gradient-to-br from-primary/10 via-accent/5 to-secondary text-card-foreground border border-primary/10",
+        elevated:
+          "bg-card text-card-foreground border shadow-lg shadow-primary/5",
+        outline:
+          "bg-transparent text-card-foreground border-2 border-dashed",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+)
+
+function Card({
+  className,
+  variant,
+  ...props
+}: React.ComponentProps<"div"> & VariantProps<typeof cardVariants>) {
   return (
     <div
       data-slot="card"
-      className={cn(
-        "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm",
-        className
-      )}
+      data-variant={variant}
+      className={cn(cardVariants({ variant }), className)}
       {...props}
     />
   )
@@ -32,7 +62,7 @@ function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-title"
-      className={cn("leading-none font-semibold", className)}
+      className={cn("leading-none font-semibold tracking-tight", className)}
       {...props}
     />
   )
@@ -42,7 +72,7 @@ function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-description"
-      className={cn("text-muted-foreground text-sm", className)}
+      className={cn("text-muted-foreground text-sm leading-relaxed", className)}
       {...props}
     />
   )
@@ -89,4 +119,5 @@ export {
   CardAction,
   CardDescription,
   CardContent,
+  cardVariants,
 }

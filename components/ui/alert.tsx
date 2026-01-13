@@ -4,13 +4,20 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const alertVariants = cva(
-  "relative w-full rounded-lg border px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current",
+  "relative w-full rounded-2xl border px-5 py-4 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-1 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current transition-all duration-200",
   {
     variants: {
       variant: {
-        default: "bg-card text-card-foreground",
+        default:
+          "glass glass-border text-card-foreground",
         destructive:
-          "text-destructive bg-card [&>svg]:text-current *:data-[slot=alert-description]:text-destructive/90",
+          "bg-destructive/10 border-destructive/20 text-destructive [&>svg]:text-current *:data-[slot=alert-description]:text-destructive/80",
+        success:
+          "bg-emerald-500/10 border-emerald-500/20 text-emerald-700 dark:text-emerald-400 [&>svg]:text-current",
+        warning:
+          "bg-amber-500/10 border-amber-500/20 text-amber-700 dark:text-amber-400 [&>svg]:text-current",
+        info:
+          "bg-primary/10 border-primary/20 text-primary [&>svg]:text-current",
       },
     },
     defaultVariants: {
